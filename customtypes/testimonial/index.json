@@ -27,7 +27,7 @@
           "label": "testimonial user name",
           "placeholder": "",
           "allowTargetBlank": false,
-          "single": "strong"
+          "single": "heading6,strong"
         }
       },
       "testimonial_user_job": {

@@ -1,44 +1,14 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { createClient } from "../../prismicio";
-import { Post } from "@/components";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { TestimonialDocument } from "../../.slicemachine/prismicio";
-import { PrismicRichText } from "@prismicio/react";
-import Image from "next/image";
+import { Testimonial } from "@/components";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Page({ page, posts, testimonials }: PageProps) {
-	console.log(testimonials);
+	console.log(page);
 	return (
 		<>
-			<section>{/* <Post /> */}</section>
-			<section className="bg-my-black">
-				<Swiper
-					spaceBetween={0}
-					slidesPerView={1}
-					onSlideChange={() => console.log("slide change")}
-					onSwiper={(swiper) => console.log(swiper)}
-				>
-					{testimonials.map((testimonial: TestimonialDocument, key: number) => {
-						return (
-							<SwiperSlide key={testimonial.uid} className="px-6 text-white">
-								<PrismicRichText field={testimonial.data.testimonial_body} />
-								<Image
-									src={testimonial.data.testimonial_user_image.url!}
-									alt={testimonial.data.testimonial_user_image.alt!}
-									width={
-										testimonial.data.testimonial_user_image.dimensions?.width
-									}
-									height={
-										testimonial.data.testimonial_user_image.dimensions?.height
-									}
-								/>
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
-			</section>
+			<Testimonial testimonials={testimonials} />
 		</>
 	);
 }

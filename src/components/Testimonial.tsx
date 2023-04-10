@@ -3,23 +3,11 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TestimonialDocument } from "../../.slicemachine/prismicio";
 
-interface PostProps {
-	post_id: any;
-	post_icon: any;
-	post_title: any;
-	post_body: any;
-	post_image: any;
-	post_cta: any;
+interface TestimonialProps {
+	testimonials: TestimonialDocument<string>[];
 }
 
-export const Post = ({
-	post_id,
-	post_icon,
-	post_title,
-	post_body,
-	post_image,
-	post_cta,
-}: PostProps) => {
+export const Testimonial = ({ testimonials }: TestimonialProps) => {
 	return (
 		<>
 			<section className="bg-my-black">
@@ -77,5 +65,3 @@ export const Post = ({
 		</>
 	);
 };
-
-export default Post;
