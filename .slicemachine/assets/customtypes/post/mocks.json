@@ -1,0 +1,77 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "direction"
+  },
+  "post_icon": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+      "width": 3648,
+      "height": 4560
+    },
+    "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?rect=0%2C456%2C3648%2C3648&w=64&h=64",
+    "width": 64,
+    "height": 64,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 456
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "post_title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "heading3",
+        "content": {
+          "text": "Company"
+        }
+      }
+    ]
+  },
+  "post_body": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Officia ullamco ipsum cillum deserunt fugiat nisi reprehenderit velit dolor elit nostrud occaecat proident aute est. Exercitation tempor laboris veniam consectetur id duis aute sunt dolore aliquip eu."
+        }
+      }
+    ]
+  },
+  "post_image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+      "width": 3344,
+      "height": 2509
+    },
+    "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+    "width": 3344,
+    "height": 2509,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "post_cta": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  }
+}

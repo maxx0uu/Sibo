@@ -1,0 +1,24 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "excellent"
+  },
+  "cta_text": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Adipisicing reprehenderit ex consectetur et sunt amet ullamco."
+        }
+      }
+    ]
+  },
+  "cta_url": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://prismic.io"
+    }
+  }
+}

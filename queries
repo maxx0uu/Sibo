@@ -1,0 +1,37 @@
+// homepage
+query HomePage {
+  allHomepages {
+    edges {
+      node {
+        slices {
+          __typename
+          ... on HomepageSlicesBlog {
+            type
+          }
+        }
+      }
+    }
+  }
+}
+
+//all posts
+query Post {
+  allPosts {
+    edges {
+      node {
+        post_icon
+        post_title
+        post_body
+        post_image
+        post_cta {
+          ... on Cta {
+            cta_text
+            cta_url {
+              _linkType
+            }
+          }
+        }
+      }
+    }
+  }
+}

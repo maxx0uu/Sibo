@@ -1,3 +1,138 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: "my-inter-regular";
+	src: local(""), url("/fonts/Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: "my-inter-bold";
+	src: local(""), url("/fonts/Inter-Bold.woff") format("woff");
+}
+@font-face {
+	font-family: "my-satoshi-bold";
+	src: local(""), url("/fonts/Satoshi-Bold.woff") format("woff");
+}
+
+/* body {
+} */
+
+/* header {
+	background: rgb(93, 117, 15);
+	background: linear-gradient(
+		180deg,
+		rgba(93, 117, 15, 1) 40%,
+		rgba(93, 117, 15, 0) 100%
+	);
+} */
+
+/* Texts settings */
+/* Headings */
+h1 {
+	@apply text-[40px] md:text-[56px];
+}
+
+h2 {
+	@apply text-[32px] md:text-5xl;
+}
+
+h3 {
+	@apply text-2xl md:text-[28px];
+}
+
+h4 {
+	@apply text-[22px] md:text-2xl;
+}
+
+h5 {
+	@apply text-xl;
+}
+
+h6 {
+	@apply text-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-bold leading-[120%] md:leading-[110%] font-my-satoshi-bold;
+}
+
+/* Links */
+a.big {
+	@apply text-lg;
+}
+
+a.medium {
+	@apply text-base;
+}
+
+a.small {
+	@apply text-sm;
+}
+
+a {
+	@apply leading-[110%] font-my-satoshi-bold;
+}
+
+/* Paragraphs */
+p.big {
+	@apply text-lg leading-[150%];
+}
+
+p.medium {
+	@apply text-base leading-[150%];
+}
+
+p.small {
+	@apply text-sm leading-[130%];
+}
+
+p.tiny {
+	@apply text-xs leading-[130%];
+}
+
+.quote {
+	@apply text-xl leading-[160%] italic md:text-2xl;
+}
+
+p {
+	@apply font-my-inter-regular;
+}
+
+/* Components */
+/* CTA */
+.cta-big {
+	@apply rounded-xl px-[72px] py-5 bg-my-gold text-my-black hover:bg-my-black hover:text-white text-center;
+}
+
+.cta-medium-primary {
+	@apply rounded-xl px-10 py-4 bg-my-gold text-my-black hover:bg-my-black hover:text-white text-center;
+}
+
+.cta-medium-secondary {
+	@apply rounded-xl px-10 py-4 bg-my-black text-white hover:bg-my-dark-grey text-center;
+}
+
+.cta-small-primary {
+	@apply rounded-xl px-6 py-[12.5px] bg-my-gold text-my-black hover:bg-my-black hover:text-white text-center;
+}
+
+.cta-small-secondary {
+	@apply rounded-xl px-6 py-[12.5px] bg-my-dark-grey text-white hover:bg-my-gold hover:text-my-black text-center;
+}
+
+/* Burger menu */
+.burger-closed {
+	@apply relative h-6 w-6;
+}
+
+/* Card */
+.card {
+	@apply bg-white text-my-black rounded-2xl px-[30px] py-10 flex flex-col gap-6;
+}

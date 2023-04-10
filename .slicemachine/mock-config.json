@@ -1,0 +1,35 @@
+{
+  "_cts": {
+    "cta": {},
+    "link": {},
+    "post": {},
+    "testimonial": {},
+    "homepage": {}
+  },
+  "slices": {
+    "Footer": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Header": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Hero": {},
+    "Blog": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Testimonials": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    }
+  }
+}
