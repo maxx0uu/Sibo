@@ -4,7 +4,6 @@
     "variation": "default",
     "primary": {
       "logo": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
           "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
@@ -22,7 +21,50 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
+      },
+      "right": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Deserunt minim eiusmod laborum. Mollit laboris velit dolor laboris magna minim ut et dolore exercitation proident cillum nulla dolor mollit. Ullamco labore et ut et sint Lorem irure fugiat."
+            }
+          }
+        ]
+      },
+      "legal": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "In aliqua duis fugiat consectetur aute et deserunt do velit cupidatat sunt do eiusmod aliqua in."
+            }
+          }
+        ]
+      },
+      "made_by": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Adipisicing quis mollit nulla ex nulla enim enim mollit nisi aliquip ea reprehenderit nostrud. Mollit et qui eu ullamco. Dolore proident consectetur magna officia enim irure ullamco nostrud nostrud excepteur ipsum laborum."
+            }
+          }
+        ]
+      },
+      "map": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock_document_id"
+        }
       }
     },
     "items": [

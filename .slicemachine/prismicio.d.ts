@@ -105,6 +105,47 @@ interface LinkDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type LinkDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<LinkDocumentData>, "link", Lang>;
+/** Content for MapCategory documents */
+interface MapcategoryDocumentData {
+    /**
+     * Slice Zone field in *MapCategory*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mapcategory.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<MapcategoryDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *MapCategory → Slice Zone*
+ *
+ */
+type MapcategoryDocumentDataSlicesSlice = MapCategorySlice;
+/**
+ * MapCategory document from Prismic
+ *
+ * - **API ID**: `mapcategory`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MapcategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<MapcategoryDocumentData>, "mapcategory", Lang>;
+/** Content for Nav documents */
+type NavDocumentData = Record<string, never>;
+/**
+ * Nav document from Prismic
+ *
+ * - **API ID**: `nav`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<NavDocumentData>, "nav", Lang>;
 /** Content for Post documents */
 interface PostDocumentData {
     /**
@@ -252,7 +293,7 @@ interface TestimonialDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TestimonialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<TestimonialDocumentData>, "testimonial", Lang>;
-export type AllDocumentTypes = CtaDocument | HomepageDocument | LinkDocument | PostDocument | TestimonialDocument;
+export type AllDocumentTypes = CtaDocument | HomepageDocument | LinkDocument | MapcategoryDocument | NavDocument | PostDocument | TestimonialDocument;
 /**
  * Primary content in Blog → Primary
  *
@@ -343,6 +384,46 @@ interface FooterSliceDefaultPrimary {
      *
      */
     logo: prismicT.ImageField<never>;
+    /**
+     * Right field in *Footer → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.primary.right
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    right: prismicT.RichTextField;
+    /**
+     * Legal field in *Footer → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.primary.legal
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    legal: prismicT.RichTextField;
+    /**
+     * Made by field in *Footer → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.primary.made_by
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    made_by: prismicT.RichTextField;
+    /**
+     * Map field in *Footer → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.primary.map
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    map: prismicT.RelationField<"mapcategory">;
 }
 /**
  * Default variation for Footer Slice
@@ -441,6 +522,46 @@ interface HeroSliceDefaultPrimary {
      *
      */
     description: prismicT.RichTextField;
+    /**
+     * Card body field in *Hero → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.card_body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    card_body: prismicT.RichTextField;
+    /**
+     * Card CTA field in *Hero → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.card_cta
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    card_cta: prismicT.RelationField<"cta">;
+    /**
+     * Image 1 field in *Hero → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.image_1
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image_1: prismicT.ImageField<never>;
+    /**
+     * Image 2 field in *Hero → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.image_2
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image_2: prismicT.ImageField<never>;
 }
 /**
  * Default variation for Hero Slice
@@ -465,6 +586,55 @@ type HeroSliceVariation = HeroSliceDefault;
  *
  */
 export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
+/**
+ * Primary content in MapCategory → Primary
+ *
+ */
+interface MapCategorySliceDefaultPrimary {
+    /**
+     * Title field in *MapCategory → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: map_category.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * List field in *MapCategory → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: map_category.primary.list
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    list: prismicT.RichTextField;
+}
+/**
+ * Default variation for MapCategory Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `MapCategory`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MapCategorySliceDefault = prismicT.SharedSliceVariation<"default", Simplify<MapCategorySliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *MapCategory*
+ *
+ */
+type MapCategorySliceVariation = MapCategorySliceDefault;
+/**
+ * MapCategory Shared Slice
+ *
+ * - **API ID**: `map_category`
+ * - **Description**: `MapCategory`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MapCategorySlice = prismicT.SharedSlice<"map_category", MapCategorySliceVariation>;
 /**
  * Primary content in Testimonials → Primary
  *
@@ -525,6 +695,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, LinkDocumentData, LinkDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, FooterSliceDefaultPrimary, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice };
+        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, LinkDocumentData, LinkDocument, MapcategoryDocumentData, MapcategoryDocumentDataSlicesSlice, MapcategoryDocument, NavDocumentData, NavDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, FooterSliceDefaultPrimary, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, MapCategorySliceDefaultPrimary, MapCategorySliceDefault, MapCategorySliceVariation, MapCategorySlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice };
     }
 }

@@ -15,9 +15,7 @@ interface CustomersProps {
 }
 
 export const Customers = ({ title, testimonialsData }: CustomersProps) => {
-	const [isMobile, setIsMobile] = useState(
-		typeof window !== "undefined" ? window.innerWidth > 768 : false
-	);
+	const [isMobile, setIsMobile] = useState(true);
 
 	const updateMedia = () => {
 		setIsMobile(
@@ -38,7 +36,7 @@ export const Customers = ({ title, testimonialsData }: CustomersProps) => {
 						<PrismicRichText field={title} />
 					</div>
 					<Swiper
-						modules={[Pagination, Navigation]}
+						modules={[Pagination, Navigation, Autoplay]}
 						spaceBetween={48}
 						slidesPerView={1}
 						loop
@@ -78,12 +76,12 @@ export const Customers = ({ title, testimonialsData }: CustomersProps) => {
 													field={testimonial.data.testimonial_user_name}
 												/>
 												<div className="flex justify-center">
-													{testimonial.data.testimonial_user_job != "" ? (
+													{testimonial.data.testimonial_user_job.length ? (
 														<div className="flex">
 															<PrismicRichText
 																field={testimonial.data.testimonial_user_job}
 															/>
-															<p>&nbsp;-&nbsp;</p>
+															&nbsp;-&nbsp;
 														</div>
 													) : null}
 													<PrismicRichText

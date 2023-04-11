@@ -4,6 +4,7 @@ import Blog from './Blog';
 import Footer from './Footer';
 import Header from './Header';
 import Hero from './Hero';
+import MapCategory from './MapCategory';
 import Testimonials from './Testimonials';
 
 export {
@@ -11,6 +12,7 @@ export {
 	Footer,
 	Header,
 	Hero,
+	MapCategory,
 	Testimonials,
 };
 
@@ -19,5 +21,6 @@ export const components = {
 	footer: Footer,
 	header: Header,
 	hero: Hero,
+	map_category: MapCategory,
 	testimonials: Testimonials,
 };

@@ -70,19 +70,19 @@ a {
 }
 
 /* Paragraphs */
-p.big {
+.big {
 	@apply text-lg leading-[150%];
 }
 
-p.medium {
+.medium {
 	@apply text-base leading-[150%];
 }
 
-p.small {
+.small {
 	@apply text-sm leading-[130%];
 }
 
-p.tiny {
+.tiny {
 	@apply text-xs leading-[130%];
 }
 
@@ -92,6 +92,11 @@ p.tiny {
 
 p {
 	@apply font-my-inter-regular;
+}
+
+/* List */
+ul {
+	@apply flex flex-col gap-4;
 }
 
 /* Components */
@@ -134,7 +139,7 @@ p {
 
 /* Pagination settings */
 .swiper-pagination {
-	@apply !relative !inline-block !pt-10 md:!text-left md:pl-6;
+	@apply !relative !inline-block !pt-10 !w-full md:!w-auto md:!pt-0 md:!-translate-y-1 md:!text-left md:pl-6;
 }
 
 .swiper-pagination-bullet {
@@ -144,13 +149,9 @@ p {
 /* Navigation settings */
 .swiper-button-prev,
 .swiper-button-next {
-	@apply !bg-white !inline-block !relative !h-8 !w-8 !rounded-full after:!text-base after:content-none text-my-black;
+	@apply !bg-white !inline-block !relative !h-8 !w-8 !rounded-full !text-my-black !font-bold !text-center after:!text-base after:content-none after:!absolute after:!left-1/2 after:!top-1/2 after:!-translate-x-1/2 after:!-translate-y-1/2;
 }
 
-/* .swiper-button-prev {
-	@apply !;
-} */
-
 .swiper-button-next {
-	@apply !ml-4;
+	@apply !ml-4 !right-auto;
 }

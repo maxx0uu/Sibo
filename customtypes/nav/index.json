@@ -1,0 +1,9 @@
+{
+  "id": "nav",
+  "label": "Nav",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}

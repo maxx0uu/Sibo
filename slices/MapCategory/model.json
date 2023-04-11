@@ -1,0 +1,37 @@
+{
+  "id": "map_category",
+  "type": "SharedSlice",
+  "name": "MapCategory",
+  "description": "MapCategory",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "MapCategory",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading6"
+          }
+        },
+        "list": {
+          "type": "StructuredText",
+          "config": {
+            "label": "List",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "list-item"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

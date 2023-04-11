@@ -1,10 +1,10 @@
 import { ContentRelationshipField } from "@prismicio/types";
 import Link from "next/link";
 import { CtaDocument } from "../../.slicemachine/prismicio";
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicLink, PrismicRichText } from "@prismicio/react";
 
 interface CtaProps {
-	cta: ContentRelationshipField<"cta">;
+	cta: any;
 	ctas: CtaDocument<string>[];
 	type: string;
 }
@@ -12,18 +12,19 @@ interface CtaProps {
 export const Cta = ({ cta, ctas, type }: CtaProps) => {
 	return (
 		<>
-			<Link
-				href={
-					ctas.find((singleCta) => (singleCta.uid = cta.uid))?.data.cta_url.url
+			<PrismicLink
+				field={
+					ctas.find((singleCta) => (singleCta.uid = cta.uid))?.data.cta_url
 				}
-				className="bg-my-black text-white py-4 px-10 rounded-xl md:mt-4"
 			>
-				<PrismicRichText
-					field={
-						ctas.find((singleCta) => (singleCta.uid = cta.uid))?.data.cta_text
-					}
-				/>
-			</Link>
+				<div className="py-5 text-center bg-my-gold rounded-xl font-bold">
+					<PrismicRichText
+						field={
+							ctas.find((singleCta) => (singleCta.uid = cta.uid))?.data.cta_text
+						}
+					/>
+				</div>
+			</PrismicLink>
 		</>
 	);
 };

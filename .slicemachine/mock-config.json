@@ -4,7 +4,9 @@
     "link": {},
     "post": {},
     "testimonial": {},
-    "homepage": {}
+    "homepage": {},
+    "nav": {},
+    "mapcategory": {}
   },
   "slices": {
     "Footer": {
@@ -18,7 +20,11 @@
         "items": {}
       }
     },
-    "Hero": {},
+    "Hero": {
+      "default": {
+        "primary": {}
+      }
+    },
     "Blog": {
       "default": {
         "primary": {},
@@ -26,6 +32,12 @@
       }
     },
     "Testimonials": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "MapCategory": {
       "default": {
         "primary": {},
         "items": {}
