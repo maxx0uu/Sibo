@@ -1,14 +1,58 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { createClient } from "../../prismicio";
-import { Testimonial } from "@/components";
+import { Blog, Customers } from "@/components";
+import { HomepageDocumentDataSlicesSlice } from "../../.slicemachine/prismicio";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function Page({ page, posts, testimonials }: PageProps) {
-	console.log(page);
+export default function Page({
+	page,
+	posts,
+	testimonials,
+	ctas,
+	links,
+}: PageProps) {
 	return (
 		<>
-			<Testimonial testimonials={testimonials} />
+			{page.data.slices.map(
+				(slice: HomepageDocumentDataSlicesSlice, key: number) => {
+					switch (slice.slice_type) {
+						case "header":
+							return console.log("header");
+							break;
+						case "hero":
+							return console.log("hero");
+							break;
+						case "blog":
+							return (
+								<Blog
+									title={slice.primary.blog_title}
+									subtitle={slice.primary.blog_subtitle}
+									body={slice.primary.blog_body}
+									postsData={posts}
+									ctasData={ctas}
+									key={slice.slice_type}
+								/>
+							);
+							break;
+						case "testimonials":
+							return (
+								<Customers
+									title={slice.primary.testimonials_title}
+									testimonialsData={testimonials}
+									key={slice.slice_type}
+								/>
+							);
+							break;
+						case "footer":
+							return console.log("footer");
+							break;
+						default:
+							console.warn("Unknown slice_type");
+							break;
+					}
+				}
+			)}
 		</>
 	);
 }

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add fonts */
 @font-face {
 	font-family: "my-inter-regular";
 	src: local(""), url("/fonts/Inter-Regular.woff") format("woff");
@@ -15,18 +16,6 @@
 	font-family: "my-satoshi-bold";
 	src: local(""), url("/fonts/Satoshi-Bold.woff") format("woff");
 }
-
-/* body {
-} */
-
-/* header {
-	background: rgb(93, 117, 15);
-	background: linear-gradient(
-		180deg,
-		rgba(93, 117, 15, 1) 40%,
-		rgba(93, 117, 15, 0) 100%
-	);
-} */
 
 /* Texts settings */
 /* Headings */
@@ -135,4 +124,33 @@ p {
 /* Card */
 .card {
 	@apply bg-white text-my-black rounded-2xl px-[30px] py-10 flex flex-col gap-6;
+}
+
+/* Swiper settings */
+/* General settings */
+.swiper-slide {
+	@apply !flex;
+}
+
+/* Pagination settings */
+.swiper-pagination {
+	@apply !relative !inline-block !pt-10 md:!text-left md:pl-6;
+}
+
+.swiper-pagination-bullet {
+	@apply !bg-white;
+}
+
+/* Navigation settings */
+.swiper-button-prev,
+.swiper-button-next {
+	@apply !bg-white !inline-block !relative !h-8 !w-8 !rounded-full after:!text-base after:content-none text-my-black;
+}
+
+/* .swiper-button-prev {
+	@apply !;
+} */
+
+.swiper-button-next {
+	@apply !ml-4;
 }

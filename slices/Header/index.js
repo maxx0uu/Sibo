@@ -16,7 +16,6 @@ const Header = ({ slice }) => (
 		<div class="text-black">
 			<PrismicLink document={slice.primary.cta}>My Link</PrismicLink>
 		</div>
-		{console.log(slice.primary.cta)}
 	</section>
 );
 
