@@ -1,41 +1,31 @@
-import { GetStaticPropsContext } from "next";
-import { CtaDocument } from "../../.slicemachine/prismicio";
 import { PrismicLink, PrismicRichText } from "@prismicio/react";
+import { LinkField, RichTextField } from "@prismicio/types";
 
 interface CtaProps {
-	cta: any;
-	ctas: CtaDocument<string>[];
+	text: RichTextField;
+	url: LinkField;
 	type: string;
 }
 
-export const Cta = ({ cta, ctas, type }: CtaProps) => {
-	// console.log(cta.slug);
-	// console.log(ctas);
-	// console.log(
-	// 	ctas.find(
-	// 		(singleCta: CtaDocument<string>) => (singleCta.slugs[0] = cta.slug)
-	// 	)?.data.cta_url
-	// );
-	// console.log(ctas.map((singleCta: CtaDocument<string>) => singleCta.slugs[0]));
-	// console.log(cta);
-	// console.log(cta.slug);
-	// 	(singleCta: CtaDocument<string>) => singleCta.slugs[0] == cta.slug
-	// )?.data.cta_url);
+export const Cta = ({ text, url, type }: CtaProps) => {
+	const checkType = () => {
+		switch (type) {
+			case "main":
+				return "px-10 py-5 text-center bg-my-gold rounded-xl font-bold";
+				break;
+			case "secondary":
+				return "px-10 py-5 text-center bg-my-black text-white rounded-xl font-bold";
+				break;
+			default:
+				break;
+		}
+	};
+	const ctaStyle = checkType();
 	return (
 		<>
-			<PrismicLink
-				field={
-					ctas.find(
-						(singleCta: CtaDocument<string>) => singleCta.slugs[0] == cta.slug
-					)?.data.cta_url
-				}
-			>
-				<div className="py-5 text-center bg-my-gold rounded-xl font-bold">
-					<PrismicRichText
-						field={
-							ctas.find((singleCta) => (singleCta.uid = cta.uid))?.data.cta_text
-						}
-					/>
+			<PrismicLink field={url}>
+				<div className={ctaStyle}>
+					<PrismicRichText field={text} />
 				</div>
 			</PrismicLink>
 		</>

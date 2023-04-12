@@ -1,6 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { RichTextField } from "@prismicio/types";
-import { CtaDocument, PostDocument } from "../../.slicemachine/prismicio";
+import { PostDocument } from "../../.slicemachine/prismicio";
 import { Post } from "./Post";
 
 interface BlogProps {
@@ -8,16 +8,9 @@ interface BlogProps {
 	subtitle: RichTextField;
 	body: RichTextField;
 	postsData: PostDocument<string>[];
-	ctasData: CtaDocument<string>[];
 }
 
-export const Blog = ({
-	title,
-	subtitle,
-	body,
-	postsData,
-	ctasData,
-}: BlogProps) => {
+export const Blog = ({ title, subtitle, body, postsData }: BlogProps) => {
 	return (
 		<>
 			<section className="px-6 max-w-7xl mx-auto">
@@ -36,7 +29,6 @@ export const Blog = ({
 							<Post
 								key={post.uid}
 								post={post}
-								ctas={ctasData}
 								reverse={i % 2 == 0 ? true : false}
 							/>
 						);

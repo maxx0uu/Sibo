@@ -1,42 +1,38 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { createClient } from "../../prismicio";
-import { Blog, Customers, Footer, Header, Hero } from "@/components";
+import { Blog, Customers, Footer, Header, Hero, Nav } from "@/components";
 import { HomepageDocumentDataSlicesSlice } from "../../.slicemachine/prismicio";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Page({
 	page,
+	navitems,
 	posts,
 	testimonials,
-	ctas,
-	maps,
 }: PageProps) {
-	console.log(page);
+	console.log(navitems);
 	return (
 		<>
-			{/* <main className="flex flex-col gap-16">
+			<main className="flex flex-col gap-16">
 				{page.data.slices.map(
 					(slice: HomepageDocumentDataSlicesSlice, key: number) => {
 						switch (slice.slice_type) {
+							case "nav":
+								return <Nav />;
+								break;
 							case "header":
 								return (
-									<Header
-										image={slice.primary.header_logo}
-										key={slice.slice_type}
-									/>
+									<Header image={slice.primary.logo} key={slice.slice_type} />
 								);
 								break;
 							case "hero":
 								return (
 									<Hero
 										title={slice.primary.title}
-										description={slice.primary.description}
+										description={slice.primary.subtitle}
 										cardBody={slice.primary.card_body}
 										cardCta={slice.primary.card_cta}
-										image1={slice.primary.image_1}
-										image2={slice.primary.image_2}
-										ctasData={ctas}
 										key={slice.slice_type}
 									/>
 								);
@@ -44,37 +40,33 @@ export default function Page({
 							case "blog":
 								return (
 									<Blog
-										title={slice.primary.blog_title}
-										subtitle={slice.primary.blog_subtitle}
-										body={slice.primary.blog_body}
+										title={slice.primary.title}
+										subtitle={slice.primary.subtitle}
+										body={slice.primary.body}
 										postsData={posts}
-										ctasData={ctas}
 										key={slice.slice_type}
 									/>
 								);
 								break;
-							case "blog_slice":
-								return <p>blog slice</p>;
-								break;
 							case "testimonials":
 								return (
 									<Customers
-										title={slice.primary.testimonials_title}
+										title={slice.primary.title}
 										testimonialsData={testimonials}
 										key={slice.slice_type}
 									/>
 								);
 								break;
+							case "map":
+								return <p>map</p>;
+								break;
 							case "footer":
-								// console.log(slice);
 								return (
 									<Footer
 										image={slice.primary.logo}
 										right={slice.primary.right}
 										legal={slice.primary.legal}
 										madeby={slice.primary.made_by}
-										mapsData={maps}
-										ctasData={ctas}
 										key={slice.slice_type}
 									/>
 								);
@@ -85,7 +77,7 @@ export default function Page({
 						}
 					}
 				)}
-			</main> */}
+			</main>
 		</>
 	);
 }
@@ -95,19 +87,56 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 
 	// Query page
 	const page = await client.getSingle("homepage");
-	// Queries all items
-	const ctas = await client.getAllByType("cta");
-	const posts = await client.getAllByType("post");
+	const posts = await client.getAllByType("post", {
+		graphQuery: `
+	{
+		post {
+			image
+			icon
+			title
+			body
+			list
+			cta {
+				...on cta {
+					text
+					url
+					type
+				}
+			}
+		}
+	}
+	`,
+	});
+	const navitems = await client.getAllByType("navitem", {
+		graphQuery: `
+		{
+			navitem {
+				title
+				subitem {
+					content {
+						...on post {
+							icon
+							title
+							body
+						}
+						...on testimonial {
+							user_name
+							user_image
+						}
+					}
+				}
+			}
+		}
+		`,
+	});
 	const testimonials = await client.getAllByType("testimonial");
-	const maps = await client.getAllByType("mapcategory");
 
 	return {
 		props: {
 			page,
-			ctas,
+			navitems,
 			posts,
 			testimonials,
-			maps,
 		},
 	};
 }

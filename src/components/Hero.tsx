@@ -9,20 +9,9 @@ interface HeroProps {
 	description: RichTextField;
 	cardBody: RichTextField;
 	cardCta: any;
-	image1: ImageField<never>;
-	image2: ImageField<never>;
-	ctasData: CtaDocument<string>[];
 }
 
-export const Hero = ({
-	title,
-	description,
-	cardBody,
-	cardCta,
-	image1,
-	image2,
-	ctasData,
-}: HeroProps) => {
+export const Hero = ({ title, description, cardBody, cardCta }: HeroProps) => {
 	return (
 		<>
 			<section className=" text-white pt-36 relative after:bg-my-olive after:absolute after:-z-10 after:top-0 after:left-0 after:right-0 after:block after:!h-4/6 after:md:!h-5/6">
@@ -44,10 +33,10 @@ export const Hero = ({
 					{/* Card */}
 					<div className="px-7 py-10 rounded-2xl bg-white mt-10 mb-6 text-my-black flex flex-col gap-6 md:absolute md:w-80 md:right-24 md:top-12">
 						<PrismicRichText field={cardBody} />
-						<Cta cta={cardCta} ctas={ctasData} type={""} />
+						{/* <Cta cta={cardCta} ctas={ctasData} type={""} /> */}
 					</div>
 					{/* Image */}
-					<div className="flex flex-col gap-6 z-50 md:flex-row">
+					{/* <div className="flex flex-col gap-6 z-50 md:flex-row">
 						<div className="aspect-[16/12] overflow-hidden rounded-2xl flex justify-center items-center md:aspect-square md:w-1/2">
 							<Image
 								width={image1.dimensions?.width}
@@ -64,7 +53,7 @@ export const Hero = ({
 								alt={image2.alt!}
 							/>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</section>
 		</>

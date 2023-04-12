@@ -52,40 +52,32 @@ export const Customers = ({ title, testimonialsData }: CustomersProps) => {
 										className="flex flex-col gap-10 md:flex-row md:items-end md:gap-24"
 									>
 										<div className="quote md:pb-20">
-											<PrismicRichText
-												field={testimonial.data.testimonial_body}
-											/>
+											<PrismicRichText field={testimonial.data.body} />
 										</div>
 										<div className="w-full pt-10 flex flex-col items-center">
 											<div className="w-40 md:w-64">
 												<Image
-													src={testimonial.data.testimonial_user_image.url!}
-													alt={testimonial.data.testimonial_user_image.alt!}
-													width={
-														testimonial.data.testimonial_user_image.dimensions
-															?.width
-													}
+													src={testimonial.data.user_image.url!}
+													alt={testimonial.data.user_image.alt!}
+													width={testimonial.data.user_image.dimensions?.width}
 													height={
-														testimonial.data.testimonial_user_image.dimensions
-															?.height
+														testimonial.data.user_image.dimensions?.height
 													}
 												/>
 											</div>
 											<div className="pt-6 text-center flex flex-col gap-2 md:pt-[72px]">
-												<PrismicRichText
-													field={testimonial.data.testimonial_user_name}
-												/>
+												<PrismicRichText field={testimonial.data.user_name} />
 												<div className="flex justify-center">
-													{testimonial.data.testimonial_user_job.length ? (
+													{testimonial.data.user_job.length ? (
 														<div className="flex">
 															<PrismicRichText
-																field={testimonial.data.testimonial_user_job}
+																field={testimonial.data.user_job}
 															/>
 															&nbsp;-&nbsp;
 														</div>
 													) : null}
 													<PrismicRichText
-														field={testimonial.data.testimonial_user_location}
+														field={testimonial.data.user_location}
 													/>
 												</div>
 											</div>
