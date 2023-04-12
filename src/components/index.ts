@@ -1,6 +1,7 @@
 export * from "./Cta";
 export * from "./Post";
 export * from "./Nav";
+export * from "./NavSubItem";
 export * from "./Header";
 export * from "./Hero";
 export * from "./Blog";

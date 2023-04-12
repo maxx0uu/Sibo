@@ -11,7 +11,6 @@ export default function Page({
 	posts,
 	testimonials,
 }: PageProps) {
-	console.log(navitems);
 	return (
 		<>
 			<main className="flex flex-col gap-16">
@@ -19,7 +18,7 @@ export default function Page({
 					(slice: HomepageDocumentDataSlicesSlice, key: number) => {
 						switch (slice.slice_type) {
 							case "nav":
-								return <Nav />;
+								return <Nav navItems={navitems} key={slice.slice_type} />;
 								break;
 							case "header":
 								return (
@@ -58,7 +57,7 @@ export default function Page({
 								);
 								break;
 							case "map":
-								return <p>map</p>;
+								return <p key={slice.slice_type}>map</p>;
 								break;
 							case "footer":
 								return (
