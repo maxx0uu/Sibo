@@ -20,13 +20,13 @@
             "single": "heading1"
           }
         },
-        "description": {
+        "subtitle": {
           "type": "StructuredText",
           "config": {
-            "label": "Description",
+            "label": "Subtitle",
             "placeholder": "A nice description of your feature",
             "allowTargetBlank": false,
-            "single": "paragraph"
+            "single": "heading4"
           }
         },
         "card_body": {
@@ -47,25 +47,18 @@
               "cta"
             ]
           }
-        },
-        "image_1": {
+        }
+      },
+      "items": {
+        "image": {
           "type": "Image",
           "config": {
-            "label": "Image 1",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "image_2": {
-          "type": "Image",
-          "config": {
-            "label": "Image 2",
+            "label": "Image",
             "constraint": {},
             "thumbnails": []
           }
         }
       },
-      "items": {},
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]

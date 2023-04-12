@@ -1,24 +1,29 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "excellent"
+    "value": "loud"
   },
-  "cta_text": {
+  "text": {
     "__TYPE__": "StructuredTextContent",
     "value": [
       {
         "type": "paragraph",
         "content": {
-          "text": "Adipisicing reprehenderit ex consectetur et sunt amet ullamco."
+          "text": "Adipisicing reprehenderit velit ut aliquip elit anim mollit enim. Ipsum nisi ipsum dolore ullamco."
         }
       }
     ]
   },
-  "cta_url": {
+  "url": {
     "__TYPE__": "LinkContent",
     "value": {
       "__TYPE__": "ExternalLink",
-      "url": "https://prismic.io"
+      "url": "http://twitter.com"
     }
+  },
+  "type": {
+    "__TYPE__": "FieldContent",
+    "value": "secondary",
+    "type": "Select"
   }
 }

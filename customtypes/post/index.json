@@ -8,14 +8,14 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "post id",
+          "label": "ID",
           "placeholder": ""
         }
       },
-      "post_icon": {
+      "icon": {
         "type": "Image",
         "config": {
-          "label": "post icon",
+          "label": "Icon",
           "constraint": {
             "width": 64,
             "height": 64
@@ -23,36 +23,45 @@
           "thumbnails": []
         }
       },
-      "post_title": {
+      "title": {
         "type": "StructuredText",
         "config": {
-          "label": "post title",
+          "label": "Title",
           "placeholder": "",
           "allowTargetBlank": false,
           "single": "heading3"
         }
       },
-      "post_body": {
+      "body": {
         "type": "StructuredText",
         "config": {
-          "label": "post body",
+          "label": "Body",
           "placeholder": "",
           "allowTargetBlank": false,
-          "single": "paragraph,strong,list-item,em"
+          "single": "paragraph,strong,em"
         }
       },
-      "post_image": {
+      "list": {
+        "type": "StructuredText",
+        "config": {
+          "label": "List",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "list-item"
+        }
+      },
+      "image": {
         "type": "Image",
         "config": {
-          "label": "post image",
+          "label": "Image",
           "constraint": {},
           "thumbnails": []
         }
       },
-      "post_cta": {
+      "cta": {
         "type": "Link",
         "config": {
-          "label": "post cta",
+          "label": "CTA",
           "select": "document",
           "customtypes": [
             "cta"

@@ -3,13 +3,13 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
-      "testimonials_title": {
+      "title": {
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
             "type": "heading2",
             "content": {
-              "text": "Wrapped"
+              "text": "Event"
             }
           }
         ]

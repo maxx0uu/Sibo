@@ -1,12 +1,15 @@
 {
   "_cts": {
     "cta": {},
-    "link": {},
     "post": {},
     "testimonial": {},
     "homepage": {},
-    "nav": {},
-    "mapcategory": {}
+    "navitem": {
+      "subitem": {}
+    },
+    "mapitem": {
+      "list": {}
+    }
   },
   "slices": {
     "Footer": {
@@ -37,7 +40,13 @@
         "items": {}
       }
     },
-    "MapCategory": {
+    "Nav": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Map": {
       "default": {
         "primary": {},
         "items": {}

@@ -11,28 +11,28 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Blog",
       "primary": {
-        "blog_subtitle": {
+        "title": {
           "type": "StructuredText",
           "config": {
-            "label": "blog subtitle",
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "heading5"
           }
         },
-        "blog_title": {
+        "body": {
           "type": "StructuredText",
           "config": {
-            "label": "blog title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "heading2"
-          }
-        },
-        "blog_body": {
-          "type": "StructuredText",
-          "config": {
-            "label": "blog body",
+            "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph"

@@ -8,58 +8,58 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "testimonial id",
+          "label": "ID",
           "placeholder": ""
         }
       },
-      "testimonial_body": {
+      "body": {
         "type": "StructuredText",
         "config": {
-          "label": "testimonial body",
+          "label": "Body",
           "placeholder": "",
           "allowTargetBlank": false,
           "single": "em"
         }
       },
-      "testimonial_user_name": {
+      "user_name": {
         "type": "StructuredText",
         "config": {
-          "label": "testimonial user name",
+          "label": "User name",
           "placeholder": "",
           "allowTargetBlank": false,
-          "single": "heading6,strong"
+          "single": "paragraph"
         }
       },
-      "testimonial_user_job": {
+      "user_job": {
         "type": "StructuredText",
         "config": {
-          "label": "testimonial user job",
+          "label": "User job",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "paragraph"
         }
       },
-      "testimonial_user_location": {
+      "user_location": {
         "type": "StructuredText",
         "config": {
-          "label": "testimonial user location",
+          "label": "User location",
           "placeholder": "",
-          "allowTargetBlank": true,
+          "allowTargetBlank": false,
           "single": "paragraph"
         }
       },
-      "testimonial_user_image": {
+      "user_image": {
         "type": "Image",
         "config": {
-          "label": "testimonial user image",
+          "label": "User image",
           "constraint": {},
           "thumbnails": []
         }
       },
-      "testimonial_user_signature": {
+      "user_signature": {
         "type": "Image",
         "config": {
-          "label": "testimonial user signature",
+          "label": "User signature",
           "constraint": {},
           "thumbnails": []
         }

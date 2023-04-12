@@ -8,25 +8,37 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "cta id",
+          "label": "ID",
           "placeholder": ""
         }
       },
-      "cta_text": {
+      "text": {
         "type": "StructuredText",
         "config": {
-          "label": "cta text",
+          "label": "Text",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "paragraph,strong,em"
         }
       },
-      "cta_url": {
+      "url": {
         "type": "Link",
         "config": {
-          "label": "cta url",
+          "label": "URL",
           "placeholder": "",
+          "allowTargetBlank": false,
           "select": null
+        }
+      },
+      "type": {
+        "type": "Select",
+        "config": {
+          "label": "Type",
+          "placeholder": "",
+          "options": [
+            "main",
+            "secondary"
+          ]
         }
       }
     }

@@ -66,7 +66,7 @@ a.small {
 }
 
 a {
-	@apply leading-[110%] font-my-satoshi-bold;
+	@apply leading-[110%] font-my-inter-regular;
 }
 
 /* Paragraphs */
@@ -97,6 +97,10 @@ p {
 /* List */
 ul {
 	@apply flex flex-col gap-4;
+}
+
+li {
+	@apply py-2;
 }
 
 /* Components */

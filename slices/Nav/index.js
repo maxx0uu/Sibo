@@ -2,11 +2,11 @@ import React from 'react'
 import { PrismicRichText } from '@prismicio/react'
 
 /**
- * @typedef {import("@prismicio/client").Content.MapCategorySlice} MapCategorySlice
- * @typedef {import("@prismicio/react").SliceComponentProps<MapCategorySlice>} MapCategoryProps
- * @param { MapCategoryProps }
+ * @typedef {import("@prismicio/client").Content.NavSlice} NavSlice
+ * @typedef {import("@prismicio/react").SliceComponentProps<NavSlice>} NavProps
+ * @param { NavProps }
  */
-const MapCategory = ({ slice }) => (
+const Nav = ({ slice }) => (
   <section>
     <span className="title">
       {
@@ -33,4 +33,4 @@ const MapCategory = ({ slice }) => (
   </section>
 )
 
-export default MapCategory
+export default Nav

@@ -9,27 +9,38 @@ type Simplify<T> = {
 /** Content for CTA documents */
 interface CtaDocumentData {
     /**
-     * cta text field in *CTA*
+     * Text field in *CTA*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: cta.cta_text
+     * - **API ID Path**: cta.text
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    cta_text: prismicT.RichTextField;
+    text: prismicT.RichTextField;
     /**
-     * cta url field in *CTA*
+     * URL field in *CTA*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
-     * - **API ID Path**: cta.cta_url
+     * - **API ID Path**: cta.url
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    cta_url: prismicT.LinkField;
+    url: prismicT.LinkField;
+    /**
+     * Type field in *CTA*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cta.type
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"main" | "secondary">;
 }
 /**
  * CTA document from Prismic
@@ -59,7 +70,7 @@ interface HomepageDocumentData {
  * Slice for *HomePage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = BlogSlice | FooterSlice | HeaderSlice | HeroSlice | TestimonialsSlice;
+type HomepageDocumentDataSlicesSlice = BlogSlice | FooterSlice | HeaderSlice | HeroSlice | TestimonialsSlice | NavSlice | MapSlice;
 /**
  * HomePage document from Prismic
  *
@@ -70,139 +81,186 @@ type HomepageDocumentDataSlicesSlice = BlogSlice | FooterSlice | HeaderSlice | H
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomepageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
-/** Content for Link documents */
-interface LinkDocumentData {
+/** Content for MapItem documents */
+interface MapitemDocumentData {
     /**
-     * link text field in *Link*
+     * Title field in *MapItem*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: link.link_text
+     * - **API ID Path**: mapitem.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    link_text: prismicT.RichTextField;
+    title: prismicT.RichTextField;
     /**
-     * link url field in *Link*
+     * List field in *MapItem*
      *
-     * - **Field Type**: Link
+     * - **Field Type**: Group
      * - **Placeholder**: *None*
-     * - **API ID Path**: link.link_url
+     * - **API ID Path**: mapitem.list[]
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
      *
      */
-    link_url: prismicT.LinkField;
+    list: prismicT.GroupField<Simplify<MapitemDocumentDataListItem>>;
 }
 /**
- * Link document from Prismic
- *
- * - **API ID**: `link`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type LinkDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<LinkDocumentData>, "link", Lang>;
-/** Content for MapCategory documents */
-interface MapcategoryDocumentData {
-    /**
-     * Slice Zone field in *MapCategory*
-     *
-     * - **Field Type**: Slice Zone
-     * - **Placeholder**: *None*
-     * - **API ID Path**: mapcategory.slices[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-     *
-     */
-    slices: prismicT.SliceZone<MapcategoryDocumentDataSlicesSlice>;
-}
-/**
- * Slice for *MapCategory → Slice Zone*
+ * Item in MapItem → List
  *
  */
-type MapcategoryDocumentDataSlicesSlice = MapCategorySlice;
-/**
- * MapCategory document from Prismic
- *
- * - **API ID**: `mapcategory`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type MapcategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<MapcategoryDocumentData>, "mapcategory", Lang>;
-/** Content for Nav documents */
-type NavDocumentData = Record<string, never>;
-/**
- * Nav document from Prismic
- *
- * - **API ID**: `nav`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<NavDocumentData>, "nav", Lang>;
-/** Content for Post documents */
-interface PostDocumentData {
+export interface MapitemDocumentDataListItem {
     /**
-     * post icon field in *Post*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: post.post_icon
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    post_icon: prismicT.ImageField<never>;
-    /**
-     * post title field in *Post*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: *None*
-     * - **API ID Path**: post.post_title
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    post_title: prismicT.TitleField;
-    /**
-     * post body field in *Post*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: post.post_body
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    post_body: prismicT.RichTextField;
-    /**
-     * post image field in *Post*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: post.post_image
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    post_image: prismicT.ImageField<never>;
-    /**
-     * post cta field in *Post*
+     * CTA field in *MapItem → List*
      *
      * - **Field Type**: Content Relationship
      * - **Placeholder**: *None*
-     * - **API ID Path**: post.post_cta
+     * - **API ID Path**: mapitem.list[].cta
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta: prismicT.RelationField<"cta">;
+    /**
+     * Link field in *MapItem → List*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mapitem.list[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    link: prismicT.RichTextField;
+}
+/**
+ * MapItem document from Prismic
+ *
+ * - **API ID**: `mapitem`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MapitemDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<MapitemDocumentData>, "mapitem", Lang>;
+/** Content for NavItem documents */
+interface NavitemDocumentData {
+    /**
+     * Title field in *NavItem*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navitem.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * SubItem field in *NavItem*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navitem.subitem[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    subitem: prismicT.GroupField<Simplify<NavitemDocumentDataSubitemItem>>;
+}
+/**
+ * Item in NavItem → SubItem
+ *
+ */
+export interface NavitemDocumentDataSubitemItem {
+    /**
+     * Content field in *NavItem → SubItem*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navitem.subitem[].content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    content: prismicT.RelationField<"post" | "testimonial">;
+}
+/**
+ * NavItem document from Prismic
+ *
+ * - **API ID**: `navitem`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavitemDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavitemDocumentData>, "navitem", Lang>;
+/** Content for Post documents */
+interface PostDocumentData {
+    /**
+     * Icon field in *Post*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.icon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * Title field in *Post*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Body field in *Post*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.body
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+    /**
+     * List field in *Post*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.list
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    list: prismicT.RichTextField;
+    /**
+     * Image field in *Post*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * CTA field in *Post*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.cta
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    post_cta: prismicT.RelationField<"cta">;
+    cta: prismicT.RelationField<"cta">;
 }
 /**
  * Post document from Prismic
@@ -217,71 +275,71 @@ export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumen
 /** Content for Testimonial documents */
 interface TestimonialDocumentData {
     /**
-     * testimonial body field in *Testimonial*
+     * Body field in *Testimonial*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_body
+     * - **API ID Path**: testimonial.body
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    testimonial_body: prismicT.RichTextField;
+    body: prismicT.RichTextField;
     /**
-     * testimonial user name field in *Testimonial*
+     * User name field in *Testimonial*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_user_name
+     * - **API ID Path**: testimonial.user_name
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    testimonial_user_name: prismicT.RichTextField;
+    user_name: prismicT.RichTextField;
     /**
-     * testimonial user job field in *Testimonial*
+     * User job field in *Testimonial*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_user_job
+     * - **API ID Path**: testimonial.user_job
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    testimonial_user_job: prismicT.RichTextField;
+    user_job: prismicT.RichTextField;
     /**
-     * testimonial user location field in *Testimonial*
+     * User location field in *Testimonial*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_user_location
+     * - **API ID Path**: testimonial.user_location
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    testimonial_user_location: prismicT.RichTextField;
+    user_location: prismicT.RichTextField;
     /**
-     * testimonial user image field in *Testimonial*
+     * User image field in *Testimonial*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_user_image
+     * - **API ID Path**: testimonial.user_image
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    testimonial_user_image: prismicT.ImageField<never>;
+    user_image: prismicT.ImageField<never>;
     /**
-     * testimonial user signature field in *Testimonial*
+     * User signature field in *Testimonial*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonial.testimonial_user_signature
+     * - **API ID Path**: testimonial.user_signature
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    testimonial_user_signature: prismicT.ImageField<never>;
+    user_signature: prismicT.ImageField<never>;
 }
 /**
  * Testimonial document from Prismic
@@ -293,42 +351,42 @@ interface TestimonialDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TestimonialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<TestimonialDocumentData>, "testimonial", Lang>;
-export type AllDocumentTypes = CtaDocument | HomepageDocument | LinkDocument | MapcategoryDocument | NavDocument | PostDocument | TestimonialDocument;
+export type AllDocumentTypes = CtaDocument | HomepageDocument | MapitemDocument | NavitemDocument | PostDocument | TestimonialDocument;
 /**
  * Primary content in Blog → Primary
  *
  */
 interface BlogSliceDefaultPrimary {
     /**
-     * blog subtitle field in *Blog → Primary*
+     * Title field in *Blog → Primary*
      *
      * - **Field Type**: Title
      * - **Placeholder**: *None*
-     * - **API ID Path**: blog.primary.blog_subtitle
+     * - **API ID Path**: blog.primary.title
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    blog_subtitle: prismicT.TitleField;
+    title: prismicT.TitleField;
     /**
-     * blog title field in *Blog → Primary*
+     * Subtitle field in *Blog → Primary*
      *
      * - **Field Type**: Title
      * - **Placeholder**: *None*
-     * - **API ID Path**: blog.primary.blog_title
+     * - **API ID Path**: blog.primary.subtitle
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    blog_title: prismicT.TitleField;
+    subtitle: prismicT.TitleField;
     /**
-     * blog body field in *Blog → Primary*
+     * Body field in *Blog → Primary*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: blog.primary.blog_body
+     * - **API ID Path**: blog.primary.body
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    blog_body: prismicT.RichTextField;
+    body: prismicT.RichTextField;
 }
 /**
  * Item in Blog → Items
@@ -369,6 +427,61 @@ type BlogSliceVariation = BlogSliceDefault;
  *
  */
 export type BlogSlice = prismicT.SharedSlice<"blog", BlogSliceVariation>;
+/**
+ * Primary content in Customers → Primary
+ *
+ */
+interface TestimonialsSliceDefaultPrimary {
+    /**
+     * Title field in *Customers → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+}
+/**
+ * Item in Customers → Items
+ *
+ */
+export interface TestimonialsSliceDefaultItem {
+    /**
+     * testimonial field in *Customers → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.items[].testimonial
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    testimonial: prismicT.RelationField<"testimonial">;
+}
+/**
+ * Default variation for Customers Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Testimonials`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TestimonialsSliceDefaultPrimary>, Simplify<TestimonialsSliceDefaultItem>>;
+/**
+ * Slice variation for *Customers*
+ *
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault;
+/**
+ * Customers Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: `Testimonials`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialsSlice = prismicT.SharedSlice<"testimonials", TestimonialsSliceVariation>;
 /**
  * Primary content in Footer → Primary
  *
@@ -414,16 +527,6 @@ interface FooterSliceDefaultPrimary {
      *
      */
     made_by: prismicT.RichTextField;
-    /**
-     * Map field in *Footer → Primary*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: footer.primary.map
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    map: prismicT.RelationField<"mapcategory">;
 }
 /**
  * Default variation for Footer Slice
@@ -454,15 +557,15 @@ export type FooterSlice = prismicT.SharedSlice<"footer", FooterSliceVariation>;
  */
 interface HeaderSliceDefaultPrimary {
     /**
-     * Header logo field in *Header → Primary*
+     * Logo field in *Header → Primary*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: header.primary.header_logo
+     * - **API ID Path**: header.primary.logo
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    header_logo: prismicT.ImageField<never>;
+    logo: prismicT.ImageField<never>;
     /**
      * CTA field in *Header → Primary*
      *
@@ -513,15 +616,15 @@ interface HeroSliceDefaultPrimary {
      */
     title: prismicT.TitleField;
     /**
-     * Description field in *Hero → Primary*
+     * Subtitle field in *Hero → Primary*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Title
      * - **Placeholder**: A nice description of your feature
-     * - **API ID Path**: hero.primary.description
+     * - **API ID Path**: hero.primary.subtitle
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
+    subtitle: prismicT.TitleField;
     /**
      * Card body field in *Hero → Primary*
      *
@@ -542,26 +645,22 @@ interface HeroSliceDefaultPrimary {
      *
      */
     card_cta: prismicT.RelationField<"cta">;
+}
+/**
+ * Item in Hero → Items
+ *
+ */
+export interface HeroSliceDefaultItem {
     /**
-     * Image 1 field in *Hero → Primary*
+     * Image field in *Hero → Items*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: hero.primary.image_1
+     * - **API ID Path**: hero.items[].image
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    image_1: prismicT.ImageField<never>;
-    /**
-     * Image 2 field in *Hero → Primary*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: hero.primary.image_2
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image_2: prismicT.ImageField<never>;
+    image: prismicT.ImageField<never>;
 }
 /**
  * Default variation for Hero Slice
@@ -571,7 +670,7 @@ interface HeroSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HeroSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceDefaultPrimary>, never>;
+export type HeroSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceDefaultPrimary>, Simplify<HeroSliceDefaultItem>>;
 /**
  * Slice variation for *Hero*
  *
@@ -587,114 +686,88 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
 /**
- * Primary content in MapCategory → Primary
+ * Item in Map → Items
  *
  */
-interface MapCategorySliceDefaultPrimary {
+export interface MapSliceDefaultItem {
     /**
-     * Title field in *MapCategory → Primary*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: *None*
-     * - **API ID Path**: map_category.primary.title
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    title: prismicT.TitleField;
-    /**
-     * List field in *MapCategory → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: map_category.primary.list
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    list: prismicT.RichTextField;
-}
-/**
- * Default variation for MapCategory Slice
- *
- * - **API ID**: `default`
- * - **Description**: `MapCategory`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type MapCategorySliceDefault = prismicT.SharedSliceVariation<"default", Simplify<MapCategorySliceDefaultPrimary>, never>;
-/**
- * Slice variation for *MapCategory*
- *
- */
-type MapCategorySliceVariation = MapCategorySliceDefault;
-/**
- * MapCategory Shared Slice
- *
- * - **API ID**: `map_category`
- * - **Description**: `MapCategory`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type MapCategorySlice = prismicT.SharedSlice<"map_category", MapCategorySliceVariation>;
-/**
- * Primary content in Testimonials → Primary
- *
- */
-interface TestimonialsSliceDefaultPrimary {
-    /**
-     * testimonials title field in *Testimonials → Primary*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: *None*
-     * - **API ID Path**: testimonials.primary.testimonials_title
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    testimonials_title: prismicT.TitleField;
-}
-/**
- * Item in Testimonials → Items
- *
- */
-export interface TestimonialsSliceDefaultItem {
-    /**
-     * testimonial field in *Testimonials → Items*
+     * Item field in *Map → Items*
      *
      * - **Field Type**: Content Relationship
      * - **Placeholder**: *None*
-     * - **API ID Path**: testimonials.items[].testimonial
+     * - **API ID Path**: map.items[].item
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    testimonial: prismicT.RelationField<"testimonial">;
+    item: prismicT.RelationField<"mapitem">;
 }
 /**
- * Default variation for Testimonials Slice
+ * Default variation for Map Slice
  *
  * - **API ID**: `default`
- * - **Description**: `Testimonials`
+ * - **Description**: `Map`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TestimonialsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TestimonialsSliceDefaultPrimary>, Simplify<TestimonialsSliceDefaultItem>>;
+export type MapSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<MapSliceDefaultItem>>;
 /**
- * Slice variation for *Testimonials*
+ * Slice variation for *Map*
  *
  */
-type TestimonialsSliceVariation = TestimonialsSliceDefault;
+type MapSliceVariation = MapSliceDefault;
 /**
- * Testimonials Shared Slice
+ * Map Shared Slice
  *
- * - **API ID**: `testimonials`
- * - **Description**: `Testimonials`
+ * - **API ID**: `map`
+ * - **Description**: `Map`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TestimonialsSlice = prismicT.SharedSlice<"testimonials", TestimonialsSliceVariation>;
+export type MapSlice = prismicT.SharedSlice<"map", MapSliceVariation>;
+/**
+ * Item in Nav → Items
+ *
+ */
+export interface NavSliceDefaultItem {
+    /**
+     * Item field in *Nav → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: nav.items[].item
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    item: prismicT.RelationField<"navitem">;
+}
+/**
+ * Default variation for Nav Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Nav`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<NavSliceDefaultItem>>;
+/**
+ * Slice variation for *Nav*
+ *
+ */
+type NavSliceVariation = NavSliceDefault;
+/**
+ * Nav Shared Slice
+ *
+ * - **API ID**: `nav`
+ * - **Description**: `Nav`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavSlice = prismicT.SharedSlice<"nav", NavSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, LinkDocumentData, LinkDocument, MapcategoryDocumentData, MapcategoryDocumentDataSlicesSlice, MapcategoryDocument, NavDocumentData, NavDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, FooterSliceDefaultPrimary, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, MapCategorySliceDefaultPrimary, MapCategorySliceDefault, MapCategorySliceVariation, MapCategorySlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice };
+        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, MapitemDocumentData, MapitemDocumentDataListItem, MapitemDocument, NavitemDocumentData, NavitemDocumentDataSubitemItem, NavitemDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice, FooterSliceDefaultPrimary, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefaultItem, HeroSliceDefault, HeroSliceVariation, HeroSlice, MapSliceDefaultItem, MapSliceDefault, MapSliceVariation, MapSlice, NavSliceDefaultItem, NavSliceDefault, NavSliceVariation, NavSlice };
     }
 }

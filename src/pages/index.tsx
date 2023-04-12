@@ -10,75 +10,82 @@ export default function Page({
 	posts,
 	testimonials,
 	ctas,
-	links,
 	maps,
 }: PageProps) {
+	console.log(page);
 	return (
 		<>
-			{page.data.slices.map(
-				(slice: HomepageDocumentDataSlicesSlice, key: number) => {
-					switch (slice.slice_type) {
-						case "header":
-							return (
-								<Header
-									image={slice.primary.header_logo}
-									key={slice.slice_type}
-								/>
-							);
-							break;
-						case "hero":
-							return (
-								<Hero
-									title={slice.primary.title}
-									description={slice.primary.description}
-									cardBody={slice.primary.card_body}
-									cardCta={slice.primary.card_cta}
-									image1={slice.primary.image_1}
-									image2={slice.primary.image_2}
-									ctasData={ctas}
-									key={slice.slice_type}
-								/>
-							);
-							break;
-						case "blog":
-							return (
-								<Blog
-									title={slice.primary.blog_title}
-									subtitle={slice.primary.blog_subtitle}
-									body={slice.primary.blog_body}
-									postsData={posts}
-									ctasData={ctas}
-									key={slice.slice_type}
-								/>
-							);
-							break;
-						case "testimonials":
-							return (
-								<Customers
-									title={slice.primary.testimonials_title}
-									testimonialsData={testimonials}
-									key={slice.slice_type}
-								/>
-							);
-							break;
-						case "footer":
-							return (
-								<Footer
-									image={slice.primary.logo}
-									right={slice.primary.right}
-									legal={slice.primary.legal}
-									madeby={slice.primary.made_by}
-									mapsData={maps}
-									key={slice.slice_type}
-								/>
-							);
-							break;
-						default:
-							console.warn("Unknown slice_type");
-							break;
+			{/* <main className="flex flex-col gap-16">
+				{page.data.slices.map(
+					(slice: HomepageDocumentDataSlicesSlice, key: number) => {
+						switch (slice.slice_type) {
+							case "header":
+								return (
+									<Header
+										image={slice.primary.header_logo}
+										key={slice.slice_type}
+									/>
+								);
+								break;
+							case "hero":
+								return (
+									<Hero
+										title={slice.primary.title}
+										description={slice.primary.description}
+										cardBody={slice.primary.card_body}
+										cardCta={slice.primary.card_cta}
+										image1={slice.primary.image_1}
+										image2={slice.primary.image_2}
+										ctasData={ctas}
+										key={slice.slice_type}
+									/>
+								);
+								break;
+							case "blog":
+								return (
+									<Blog
+										title={slice.primary.blog_title}
+										subtitle={slice.primary.blog_subtitle}
+										body={slice.primary.blog_body}
+										postsData={posts}
+										ctasData={ctas}
+										key={slice.slice_type}
+									/>
+								);
+								break;
+							case "blog_slice":
+								return <p>blog slice</p>;
+								break;
+							case "testimonials":
+								return (
+									<Customers
+										title={slice.primary.testimonials_title}
+										testimonialsData={testimonials}
+										key={slice.slice_type}
+									/>
+								);
+								break;
+							case "footer":
+								// console.log(slice);
+								return (
+									<Footer
+										image={slice.primary.logo}
+										right={slice.primary.right}
+										legal={slice.primary.legal}
+										madeby={slice.primary.made_by}
+										mapsData={maps}
+										ctasData={ctas}
+										key={slice.slice_type}
+									/>
+								);
+								break;
+							default:
+								console.warn("Unknown slice_type");
+								break;
+						}
 					}
-				}
-			)}
+				)}
+			</main> */}
 		</>
 	);
 }
@@ -90,7 +97,6 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 	const page = await client.getSingle("homepage");
 	// Queries all items
 	const ctas = await client.getAllByType("cta");
-	const links = await client.getAllByType("link");
 	const posts = await client.getAllByType("post");
 	const testimonials = await client.getAllByType("testimonial");
 	const maps = await client.getAllByType("mapcategory");
@@ -99,7 +105,6 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 		props: {
 			page,
 			ctas,
-			links,
 			posts,
 			testimonials,
 			maps,

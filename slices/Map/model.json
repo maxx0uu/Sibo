@@ -1,36 +1,28 @@
 {
-  "id": "header",
+  "id": "map",
   "type": "SharedSlice",
-  "name": "Header",
-  "description": "Header",
+  "name": "Map",
+  "description": "Map",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "Header",
-      "primary": {
-        "logo": {
-          "type": "Image",
-          "config": {
-            "label": "Logo",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "cta": {
+      "description": "Map",
+      "primary": {},
+      "items": {
+        "item": {
           "type": "Link",
           "config": {
-            "label": "CTA",
+            "label": "Item",
             "select": "document",
             "customtypes": [
-              "cta"
+              "mapitem"
             ]
           }
         }
       },
-      "items": {},
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]

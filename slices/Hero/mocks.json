@@ -14,17 +14,6 @@
           }
         ]
       },
-      "description": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "paragraph",
-            "content": {
-              "text": "Aliqua ullamco minim mollit fugiat. Aliquip ad culpa eu. Adipisicing laboris et cupidatat magna minim anim sit veniam deserunt dolor enim cupidatat."
-            }
-          }
-        ]
-      },
       "card_body": {
         "__TYPE__": "StructuredTextContent",
         "value": [
@@ -43,57 +32,49 @@
           "id": "mock_document_id"
         }
       },
-      "image_1": {
-        "origin": {
-          "id": "main",
-          "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-          "width": 5848,
-          "height": 3899
-        },
-        "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-        "width": 5848,
-        "height": 3899,
-        "edit": {
-          "zoom": 1,
-          "crop": {
-            "x": 0,
-            "y": 0
-          },
-          "background": "transparent"
-        },
-        "credits": null,
-        "alt": null,
-        "__TYPE__": "ImageContent",
-        "thumbnails": {}
-      },
-      "image_2": {
-        "origin": {
-          "id": "main",
-          "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
-          "width": 5616,
-          "height": 3744
-        },
-        "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
-        "width": 5616,
-        "height": 3744,
-        "edit": {
-          "zoom": 1,
-          "crop": {
-            "x": 0,
-            "y": 0
-          },
-          "background": "transparent"
-        },
-        "credits": null,
-        "alt": null,
-        "__TYPE__": "ImageContent",
-        "thumbnails": {}
+      "subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading4",
+            "content": {
+              "text": "Eaten"
+            }
+          }
+        ]
       }
     },
     "items": [
       {
         "__TYPE__": "GroupItemContent",
-        "value": []
+        "value": [
+          [
+            "image",
+            {
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+                "width": 3810,
+                "height": 5715
+              },
+              "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+              "width": 3810,
+              "height": 5715,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
+              "thumbnails": {}
+            }
+          ]
+        ]
       }
     ]
   }

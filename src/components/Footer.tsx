@@ -1,10 +1,14 @@
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicLink, PrismicRichText } from "@prismicio/react";
 import { ImageField, RichTextField } from "@prismicio/types";
 import Image from "next/image";
 import {
+	CtaDocument,
 	MapCategorySlice,
+	MapCategorySliceDefaultItem,
 	MapcategoryDocument,
+	Simplify,
 } from "../../.slicemachine/prismicio";
+import { Cta } from "./Cta";
 
 interface FooterProps {
 	image: ImageField<never>;
@@ -12,6 +16,7 @@ interface FooterProps {
 	legal: RichTextField;
 	madeby: RichTextField;
 	mapsData: MapcategoryDocument<string>[];
+	ctasData: CtaDocument<string>[];
 }
 
 export const Footer = ({
@@ -20,11 +25,13 @@ export const Footer = ({
 	legal,
 	madeby,
 	mapsData,
+	ctasData,
 }: FooterProps) => {
 	const maps = mapsData[0].data.slices;
+	// console.log(mapsData[0].data.slices[4]?.items[0].cta.link_type);
 	return (
 		<>
-			<footer className="pt-6 pb-9">
+			<footer className="py-6">
 				<div className="max-w-7xl mx-auto">
 					<div className="px-6 flex flex-col gap-12 pb-6">
 						{maps.map((map: MapCategorySlice) => {
@@ -33,7 +40,20 @@ export const Footer = ({
 									<div className="pb-6 big ">
 										<PrismicRichText field={map.primary.title} />
 									</div>
-									<PrismicRichText field={map.primary.list} />
+									{map.items.map(
+										(
+											item: Simplify<MapCategorySliceDefaultItem>,
+											key: number
+										) => {
+											return (
+												<div key={key}>
+													<PrismicRichText field={item.item} />
+													<Cta cta={item.cta} ctas={ctasData} type="" />
+													Prismic
+												</div>
+											);
+										}
+									)}
 								</div>
 							);
 						})}

@@ -1,62 +1,19 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "direction"
+    "value": "change"
   },
-  "post_icon": {
+  "icon": {
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
-      "width": 3648,
-      "height": 4560
+      "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+      "width": 3456,
+      "height": 3456
     },
-    "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?rect=0%2C456%2C3648%2C3648&w=64&h=64",
+    "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?rect=0%2C0%2C3456%2C3456&w=64&h=64",
     "width": 64,
     "height": 64,
-    "edit": {
-      "zoom": 1,
-      "crop": {
-        "x": 0,
-        "y": 456
-      },
-      "background": "transparent"
-    },
-    "thumbnails": {}
-  },
-  "post_title": {
-    "__TYPE__": "StructuredTextContent",
-    "value": [
-      {
-        "type": "heading3",
-        "content": {
-          "text": "Company"
-        }
-      }
-    ]
-  },
-  "post_body": {
-    "__TYPE__": "StructuredTextContent",
-    "value": [
-      {
-        "type": "paragraph",
-        "content": {
-          "text": "Officia ullamco ipsum cillum deserunt fugiat nisi reprehenderit velit dolor elit nostrud occaecat proident aute est. Exercitation tempor laboris veniam consectetur id duis aute sunt dolore aliquip eu."
-        }
-      }
-    ]
-  },
-  "post_image": {
-    "__TYPE__": "ImageContent",
-    "origin": {
-      "id": "main",
-      "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
-      "width": 3344,
-      "height": 2509
-    },
-    "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
-    "width": 3344,
-    "height": 2509,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -67,7 +24,61 @@
     },
     "thumbnails": {}
   },
-  "post_cta": {
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "heading3",
+        "content": {
+          "text": "Butter"
+        }
+      }
+    ]
+  },
+  "body": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Tempor exercitation laboris nostrud. Consequat cupidatat magna id occaecat adipisicing culpa magna elit sunt amet eiusmod est consectetur nulla."
+        }
+      }
+    ]
+  },
+  "list": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Nisi aute aliqua magna et nostrud qui amet cillum cupidatat. Aliquip laborum veniam dolor voluptate id aute exercitation id qui ea velit."
+        }
+      }
+    ]
+  },
+  "image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+      "width": 4272,
+      "height": 2848
+    },
+    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+    "width": 4272,
+    "height": 2848,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "cta": {
     "__TYPE__": "LinkContent",
     "value": {
       "__TYPE__": "DocumentLink",

@@ -3,35 +3,35 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
-      "blog_subtitle": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "heading5",
-            "content": {
-              "text": "Acres"
-            }
-          }
-        ]
-      },
-      "blog_title": {
+      "title": {
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
             "type": "heading2",
             "content": {
-              "text": "Population"
+              "text": "Shadow"
             }
           }
         ]
       },
-      "blog_body": {
+      "subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading5",
+            "content": {
+              "text": "Sense"
+            }
+          }
+        ]
+      },
+      "body": {
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
             "type": "paragraph",
             "content": {
-              "text": "In aliquip velit anim tempor."
+              "text": "Amet sunt commodo et est eiusmod culpa commodo nulla."
             }
           }
         ]
