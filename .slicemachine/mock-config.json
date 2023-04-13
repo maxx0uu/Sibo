@@ -39,18 +39,6 @@
         "primary": {},
         "items": {}
       }
-    },
-    "Nav": {
-      "default": {
-        "primary": {},
-        "items": {}
-      }
-    },
-    "Map": {
-      "default": {
-        "primary": {},
-        "items": {}
-      }
     }
   }
 }

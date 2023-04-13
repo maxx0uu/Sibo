@@ -5,8 +5,6 @@ import Customers from './Customers';
 import Footer from './Footer';
 import Header from './Header';
 import Hero from './Hero';
-import Map from './Map';
-import Nav from './Nav';
 
 export {
 	Blog,
@@ -14,8 +12,6 @@ export {
 	Footer,
 	Header,
 	Hero,
-	Map,
-	Nav,
 };
 
 export const components = {
@@ -24,6 +20,4 @@ export const components = {
 	footer: Footer,
 	header: Header,
 	hero: Hero,
-	map: Map,
-	nav: Nav,
 };

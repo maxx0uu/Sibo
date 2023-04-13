@@ -11,7 +11,7 @@ interface NavSubitemProps {
 export const NavSubItem = ({ image, title, body }: NavSubitemProps) => {
 	return (
 		<>
-			<div>
+			<div className="bg-red-400">
 				<div>
 					<Image
 						width={image.dimensions?.width}

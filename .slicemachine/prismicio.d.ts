@@ -70,7 +70,7 @@ interface HomepageDocumentData {
  * Slice for *HomePage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = BlogSlice | FooterSlice | HeaderSlice | HeroSlice | TestimonialsSlice | NavSlice | MapSlice;
+type HomepageDocumentDataSlicesSlice = BlogSlice | FooterSlice | HeaderSlice | HeroSlice | TestimonialsSlice;
 /**
  * HomePage document from Prismic
  *
@@ -529,6 +529,22 @@ interface FooterSliceDefaultPrimary {
     made_by: prismicT.RichTextField;
 }
 /**
+ * Item in Footer → Items
+ *
+ */
+export interface FooterSliceDefaultItem {
+    /**
+     * MapItem field in *Footer → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.items[].mapitem
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    mapitem: prismicT.RelationField;
+}
+/**
  * Default variation for Footer Slice
  *
  * - **API ID**: `default`
@@ -536,7 +552,7 @@ interface FooterSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type FooterSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FooterSliceDefaultPrimary>, never>;
+export type FooterSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FooterSliceDefaultPrimary>, Simplify<FooterSliceDefaultItem>>;
 /**
  * Slice variation for *Footer*
  *
@@ -578,6 +594,22 @@ interface HeaderSliceDefaultPrimary {
     cta: prismicT.RelationField<"cta">;
 }
 /**
+ * Item in Header → Items
+ *
+ */
+export interface HeaderSliceDefaultItem {
+    /**
+     * NavItem field in *Header → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: header.items[].navitem
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    navitem: prismicT.RelationField<"navitem">;
+}
+/**
  * Default variation for Header Slice
  *
  * - **API ID**: `default`
@@ -585,7 +617,7 @@ interface HeaderSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HeaderSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeaderSliceDefaultPrimary>, never>;
+export type HeaderSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeaderSliceDefaultPrimary>, Simplify<HeaderSliceDefaultItem>>;
 /**
  * Slice variation for *Header*
  *
@@ -685,89 +717,11 @@ type HeroSliceVariation = HeroSliceDefault;
  *
  */
 export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
-/**
- * Item in Map → Items
- *
- */
-export interface MapSliceDefaultItem {
-    /**
-     * Item field in *Map → Items*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: map.items[].item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    item: prismicT.RelationField<"mapitem">;
-}
-/**
- * Default variation for Map Slice
- *
- * - **API ID**: `default`
- * - **Description**: `Map`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type MapSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<MapSliceDefaultItem>>;
-/**
- * Slice variation for *Map*
- *
- */
-type MapSliceVariation = MapSliceDefault;
-/**
- * Map Shared Slice
- *
- * - **API ID**: `map`
- * - **Description**: `Map`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type MapSlice = prismicT.SharedSlice<"map", MapSliceVariation>;
-/**
- * Item in Nav → Items
- *
- */
-export interface NavSliceDefaultItem {
-    /**
-     * Item field in *Nav → Items*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: nav.items[].item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    item: prismicT.RelationField<"navitem">;
-}
-/**
- * Default variation for Nav Slice
- *
- * - **API ID**: `default`
- * - **Description**: `Nav`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type NavSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<NavSliceDefaultItem>>;
-/**
- * Slice variation for *Nav*
- *
- */
-type NavSliceVariation = NavSliceDefault;
-/**
- * Nav Shared Slice
- *
- * - **API ID**: `nav`
- * - **Description**: `Nav`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type NavSlice = prismicT.SharedSlice<"nav", NavSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, MapitemDocumentData, MapitemDocumentDataListItem, MapitemDocument, NavitemDocumentData, NavitemDocumentDataSubitemItem, NavitemDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice, FooterSliceDefaultPrimary, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefaultItem, HeroSliceDefault, HeroSliceVariation, HeroSlice, MapSliceDefaultItem, MapSliceDefault, MapSliceVariation, MapSlice, NavSliceDefaultItem, NavSliceDefault, NavSliceVariation, NavSlice };
+        export type { CtaDocumentData, CtaDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, MapitemDocumentData, MapitemDocumentDataListItem, MapitemDocument, NavitemDocumentData, NavitemDocumentDataSubitemItem, NavitemDocument, PostDocumentData, PostDocument, TestimonialDocumentData, TestimonialDocument, AllDocumentTypes, BlogSliceDefaultPrimary, BlogSliceDefaultItem, BlogSliceDefault, BlogSliceVariation, BlogSlice, TestimonialsSliceDefaultPrimary, TestimonialsSliceDefaultItem, TestimonialsSliceDefault, TestimonialsSliceVariation, TestimonialsSlice, FooterSliceDefaultPrimary, FooterSliceDefaultItem, FooterSliceDefault, FooterSliceVariation, FooterSlice, HeaderSliceDefaultPrimary, HeaderSliceDefaultItem, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, HeroSliceDefaultPrimary, HeroSliceDefaultItem, HeroSliceDefault, HeroSliceVariation, HeroSlice };
     }
 }

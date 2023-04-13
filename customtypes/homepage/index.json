@@ -24,12 +24,6 @@
             },
             "testimonials": {
               "type": "SharedSlice"
-            },
-            "nav": {
-              "type": "SharedSlice"
-            },
-            "map": {
-              "type": "SharedSlice"
             }
           }
         }

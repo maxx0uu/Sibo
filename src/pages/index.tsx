@@ -7,9 +7,11 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Page({
 	page,
-	navitems,
 	posts,
+	navitems,
 	testimonials,
+	mapitems,
+	heroCta,
 }: PageProps) {
 	return (
 		<>
@@ -17,12 +19,13 @@ export default function Page({
 				{page.data.slices.map(
 					(slice: HomepageDocumentDataSlicesSlice, key: number) => {
 						switch (slice.slice_type) {
-							case "nav":
-								return <Nav navItems={navitems} key={slice.slice_type} />;
-								break;
 							case "header":
 								return (
-									<Header image={slice.primary.logo} key={slice.slice_type} />
+									<Header
+										image={slice.primary.logo}
+										navItems={navitems}
+										key={slice.slice_type}
+									/>
 								);
 								break;
 							case "hero":
@@ -31,7 +34,8 @@ export default function Page({
 										title={slice.primary.title}
 										description={slice.primary.subtitle}
 										cardBody={slice.primary.card_body}
-										cardCta={slice.primary.card_cta}
+										cardCta={heroCta}
+										images={slice.items}
 										key={slice.slice_type}
 									/>
 								);
@@ -56,9 +60,6 @@ export default function Page({
 									/>
 								);
 								break;
-							case "map":
-								return <p key={slice.slice_type}>map</p>;
-								break;
 							case "footer":
 								return (
 									<Footer
@@ -66,6 +67,7 @@ export default function Page({
 										right={slice.primary.right}
 										legal={slice.primary.legal}
 										madeby={slice.primary.made_by}
+										mapitems={mapitems}
 										key={slice.slice_type}
 									/>
 								);
@@ -129,6 +131,25 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 		`,
 	});
 	const testimonials = await client.getAllByType("testimonial");
+	const mapitems = await client.getAllByType("mapitem", {
+		graphQuery: `
+		{
+			mapitem {
+				title
+				list {
+					link
+					cta {
+						...on cta {
+							text
+							url
+						}
+					}
+				}
+			}
+		}
+		`,
+	});
+	const heroCta = await client.getByUID("cta", "get-touch");
 
 	return {
 		props: {
@@ -136,6 +157,8 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 			navitems,
 			posts,
 			testimonials,
+			mapitems,
+			heroCta,
 		},
 	};
 }

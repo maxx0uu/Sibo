@@ -26,18 +26,6 @@ export const Nav = ({ navItems }: NavProps) => {
 											/>
 										);
 									})}
-								{item.uid == "company" ??
-									item.data.subitem.map((subItem: any) => {
-										return (
-											<NavSubItem
-												key={subItem.content.uid}
-												image={subItem.content.data.user_image}
-												title={subItem.content.data.user_name}
-												body={null}
-											/>
-										);
-									})}
-								{item.uid == "pricing" ?? null}
 							</li>
 						);
 					})}

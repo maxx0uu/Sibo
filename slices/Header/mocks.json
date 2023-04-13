@@ -11,7 +11,6 @@
         }
       },
       "logo": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
           "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
@@ -29,13 +28,27 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
       }
     },
     "items": [
       {
         "__TYPE__": "GroupItemContent",
-        "value": []
+        "value": [
+          [
+            "navitem",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            }
+          ]
+        ]
       }
     ]
   }

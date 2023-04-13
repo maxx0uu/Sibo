@@ -99,10 +99,6 @@ ul {
 	@apply flex flex-col gap-4;
 }
 
-li {
-	@apply py-2;
-}
-
 /* Components */
 /* CTA */
 .cta-big {

@@ -1,12 +1,15 @@
 import { ImageField } from "@prismicio/types";
 import Image from "next/image";
 import { useState } from "react";
+import { NavitemDocument } from "../../.slicemachine/prismicio";
+import { Nav } from "./Nav";
 
 interface HeaderProps {
 	image: ImageField<never>;
+	navItems: NavitemDocument<string>[];
 }
 
-export const Header = ({ image }: HeaderProps) => {
+export const Header = ({ image, navItems }: HeaderProps) => {
 	const [burgerOpen, setBurgerOpen] = useState(false);
 	return (
 		<>
@@ -51,10 +54,12 @@ export const Header = ({ image }: HeaderProps) => {
 			<div
 				className={
 					burgerOpen
-						? "bg-white fixed inset-0 duration-300 z-40"
-						: "bg-white fixed inset-0 left-full duration-300 z-40"
+						? "bg-white fixed inset-0 duration-300 z-40 pt-36 px-6"
+						: "bg-white fixed inset-0 left-full duration-300 z-40 pt-36 px-6"
 				}
-			></div>
+			>
+				<Nav navItems={navItems} />
+			</div>
 		</>
 	);
 };
