@@ -1,7 +1,6 @@
-import { PrismicLink, PrismicRichText } from "@prismicio/react";
+import { PrismicRichText } from "@prismicio/react";
 import { ImageField, RichTextField } from "@prismicio/types";
 import Image from "next/image";
-import { MapitemDocument } from "../../.slicemachine/prismicio";
 import { Cta } from "./Cta";
 
 interface FooterProps {
@@ -23,7 +22,7 @@ export const Footer = ({
 		<>
 			<footer className="py-6">
 				<div className="max-w-7xl mx-auto">
-					<div className="flex flex-col gap-12 pb-6 md:flex-row">
+					<div className="flex flex-col gap-12 pb-6 md:flex-row md:justify-between">
 						{mapitems.map((item: any, key: number) => {
 							return (
 								<div
@@ -41,7 +40,7 @@ export const Footer = ({
 													<Cta
 														text={listItem.cta.data.text}
 														url={listItem.cta.data.url}
-														type={""}
+														type={listItem.cta.data.type}
 													/>
 												) : null}
 											</div>

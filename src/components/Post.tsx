@@ -1,6 +1,5 @@
 import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
-import { PostDocument } from "../../.slicemachine/prismicio";
 import { Cta } from "./Cta";
 
 interface PostProps {

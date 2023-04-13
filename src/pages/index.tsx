@@ -142,6 +142,7 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 						...on cta {
 							text
 							url
+							type
 						}
 					}
 				}
