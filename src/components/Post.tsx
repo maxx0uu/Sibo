@@ -4,7 +4,7 @@ import { PostDocument } from "../../.slicemachine/prismicio";
 import { Cta } from "./Cta";
 
 interface PostProps {
-	post: PostDocument<string>;
+	post: any;
 	reverse: boolean;
 }
 

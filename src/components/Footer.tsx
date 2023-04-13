@@ -9,7 +9,7 @@ interface FooterProps {
 	right: RichTextField;
 	legal: RichTextField;
 	madeby: RichTextField;
-	mapitems: MapitemDocument<string>[];
+	mapitems: any;
 }
 
 export const Footer = ({
@@ -24,7 +24,7 @@ export const Footer = ({
 			<footer className="py-6">
 				<div className="max-w-7xl mx-auto">
 					<div className="flex flex-col gap-12 pb-6 md:flex-row">
-						{mapitems.map((item: MapitemDocument<string>, key: number) => {
+						{mapitems.map((item: any, key: number) => {
 							return (
 								<div
 									key={key}
@@ -33,7 +33,7 @@ export const Footer = ({
 									<div className="font-bold py-6">
 										<PrismicRichText field={item.data.title} />
 									</div>
-									{item.data.list.map((listItem, key) => {
+									{item.data.list.map((listItem: any, key: number) => {
 										return (
 											<div key={key}>
 												<PrismicRichText field={listItem.link} />
